@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>learingJS</title>
+</head>
+<body>
+<script>
+    var Man = function (name) {
+
+        this.name = name;
+        this.canSpeak = true;
+
+        var priv = '34'; //приватная
+
+        this.sayHello = function () {//менее производительный способ
+            return 'привет меня зовут' + this.name + 'мне' + priv
+
+        }
+    };
+    Man.prototype.sayHello = function () {
+        return 'привет меня зовут' + this.name + 'мне' + 34
+    }//более производительный способ
+    var vania = new Man('Ваня');
+    var petr = new Man('Петр');
+
+    //console.log(vania);
+    //console.log(vania.name);
+    //console.log(vania.canSpeak);
+//    console.log(vania.sayHello())
+//    console.log(vania.priv)//Вернет underfined
+
+    var MyApp = {
+        Man: function (name) {
+                this.name = name;
+                this.canSpeak = true;
+        }
+    }
+    var gena = new MyApp.Man('Гена')
+    console.log(gena)
+    console.log( gena instanceof Man)//instanceof можно проверить наследование
+    console.log( gena instanceof MyApp.Man)
+    console.log( vania.constructor)
+    console.log( gena.constructor)
+</script>
+</body>
+</html>
