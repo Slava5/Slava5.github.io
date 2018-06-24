@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>learnigJS</title>
+</head>
+<body>
+<script>
+//    var firstFunk = function ( a , b ) {
+//
+//        console.log( this );//если объявить функцию, в ней указать this; то будет ссылаться на window;
+//        return a + b;
+//
+//    };
+//    console.log(firstFunk( 3 , 5 ));
+
+//    var MYAPP = {
+//        func: function (a , b) {
+//            console.log( this );//если объявить объект, в нем метод, в методе this; то будет ссылаться на объект;
+//            return a + b;
+//        }
+//    }
+//    console.log(MYAPP.func(3,5));
+
+var MYAPP = (function () {
+var funkPrivate = function () {
+    console.log( this );
+    return'private';//закрытая функция, можно вызвать только если прописать в методе
+};
+    return{
+        func: function (a , b) {
+           // console.log( this );//если объявить объект, в нем метод, в методе this; то будет ссылаться на объект;
+
+            var that=this;
+            var helperFunk = function ( c , d ) {
+              //  console.log( this );//если объявить объект, в нем метод, в нем функция, в функции this; будет ссылаться на window;Чтобы обойти нужно закэшировать this, выше этой функции var that = this; обычно пишут that;
+              //  console.log( that );
+                that.multiply = c * d;
+            };
+            helperFunk(a,b);
+            return a+b;
+        },
+        funkPublic: funkPrivate
+    }
+    
+})();
+//console.log(MYAPP.func(3,5));
+//console.log(MYAPP.funkPublic());
+//console.log(MYAPP.multiply);
+
+var arr = [3,5];
+    var add = function ( a , b) {
+      console.log( this.func(5,1) );
+        return a+b;
+
+    }
+var sum = add.apply(MYAPP,arr);//первое значение scope, второе массив;
+console.log(sum)
+</script>
+</body>
+</html>
