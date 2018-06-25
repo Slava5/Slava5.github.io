@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>learningJs</title>
+</head>
+<body>
+<script>
+var wolf = { canRun: true};
+
+var dog = Object.create(wolf);
+
+    console.log( dog);
+//Эта функция разработана Дугласом Кроугфордом для ES5 IE8 и ниже, в ES6 по другому
+    function inherit (proto) {
+        function F() {}
+        F.prototype = proto;
+        return new F
+    }
+
+    var dog2 = inherit(wolf);
+    console.log( dog2.canRun )
+
+</script>
+</body>
+</html>
