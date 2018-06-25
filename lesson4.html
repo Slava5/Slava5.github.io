@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>learningJs</title>
+</head>
+<body>
+<script>
+
+    var animal = {
+        canRun : true
+    };
+
+    var Wolf = function () {
+        this.name = 'wolf'
+    };
+
+    var Gray = function () {
+        this.color = 'серый'
+    };
+    var Black = function () {
+        this.color = 'черный'
+    };
+
+    var Chicken = function () {
+        this.name = 'курица';
+        this.haveWings = true;
+    };
+
+    Wolf.prototype = animal;
+    Chicken.prototype = animal;
+
+
+    var wolfy = new Wolf();
+    var chicky = new Chicken();
+
+    Gray.prototype =wolfy;
+    Black.prototype =wolfy;
+
+    var wolfyGray = new Gray();
+    var wolfyBlack = new Black();
+
+  //  console.log( wolfyGray );
+
+    var protoOfWolfyGray = Object.getPrototypeOf( wolfyGray );//обращается к предку
+    protoOfWolfyGray.name = 'пес';
+
+    //console.log( protoOfWolfyGray);
+
+
+console.log(wolfyGray.hasOwnProperty('color'));//проверяет есть ли свойство непосредственно у этого объекта
+    console.log(wolfyGray.hasOwnProperty('name'));
+
+    for (var key in wolfyGray){
+        if(!wolfyGray.hasOwnProperty(key)) continue;
+        console.log( key + '=' + wolfyGray[key])
+    }
+
+    var TestFunc = function () {
+        this.testProp = 'test'
+    };
+console.log(TestFunc.prototype);
+    console.log(TestFunc.prototype.constructor === TestFunc)
+</script>
+
+
+</body>
+</html>
