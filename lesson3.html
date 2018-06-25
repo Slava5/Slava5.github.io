@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>learningJS</title>
+</head>
+<body>
+<script>
+//    var obj ={
+//        name: 'стол'
+//    };
+//
+//    var newObj ={
+//        name:'сундук',
+//            test: function () {
+//            console.log('тест');
+//        }
+//    }
+//
+//
+//    var Foo = function (name) {
+//        this.name = 'фу'
+////        this.__proto__ = Foo.prototype;
+//    };
+//    var boo = new Foo()
+//    Foo.prototype = newObj;
+//var boo2 = new Foo();
+//    var boo3 = new Foo();
+////console.log(boo2)
+//    console.log(boo3)
+//
+////    console.log(boo)
+////    console.log(boo.__proto__ === Foo.prototype)
+
+    var animal = {
+        canRun : true
+    };
+var Wolf = function () {
+    this.name = 'wolf'
+};
+
+var Chicken = function () {
+    this.name = 'курица';
+    this.haveWings = true;
+};
+
+var Gray = function () {
+    this.color = 'серый'
+};
+var Black = function () {
+    this.color = 'черный'
+};
+
+    Wolf.prototype = animal;
+Chicken.prototype = animal;
+Chicken.prototype.cycareky = function () {
+    console.log('кукареку')
+}
+
+    var wolfy = new Wolf();
+    var chicky = new Chicken();
+
+
+
+Gray.prototype =wolfy;
+Black.prototype =wolfy;
+var wolfyGray = new Gray();
+var wolfyBlack = new Black();
+    console.log(wolfy);
+    console.log(wolfyGray);
+    console.log(wolfyBlack);
+    console.log(chicky)
+</script>
+</body>
+</html>
